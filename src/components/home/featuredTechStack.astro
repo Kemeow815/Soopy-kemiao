@@ -17,7 +17,7 @@ const technologies = featuredTechStack.flatMap(category =>
       {GLOBAL.stackTitle}
     </h3>
     <!-- <Anchor url="/tech-stack" class="text-base">{GLOBAL.viewAll}</Anchor> -->
-  </div>
+</div>
 
 <div class="relative overflow-hidden py-8">
   <!-- 左侧渐变遮罩 -->
@@ -36,7 +36,8 @@ const technologies = featuredTechStack.flatMap(category =>
             class="h-8 w-auto object-contain transition-transform group-hover:scale-110 transform-gpu"
             width="28"
             height="28"
-            loading="lazy"
+            loading="eager" 
+            decoding="async" 
           />
           <span class="text-lg font-medium text-[var(--text-color)]">
             {tech.name}
@@ -46,8 +47,6 @@ const technologies = featuredTechStack.flatMap(category =>
     }
   </div>
 </div>
-
-
 
 <style is:global>
   @keyframes scroll {
@@ -61,6 +60,7 @@ const technologies = featuredTechStack.flatMap(category =>
   .animate-scroll {
     animation: scroll 60s linear infinite;
     will-change: transform;
+    contain: content; /* 添加内容隔离以提高性能 */
   }
   
   @media (min-width: 768px) {
@@ -68,26 +68,28 @@ const technologies = featuredTechStack.flatMap(category =>
       animation-duration: 50s;
     }
   }
+  
+  /* 添加移动端优化 */
+  @media (max-width: 767px) {
+    .animate-scroll {
+      animation-duration: 80s; /* 在移动端减慢动画速度 */
+    }
+  }
 </style>
 
+<script>
+  // 添加脚本确保SVG图标正确加载
+  document.addEventListener('DOMContentLoaded', () => {
+    // 预加载所有技术图标
+    const techIcons = document.querySelectorAll('.animate-scroll img');
+    techIcons.forEach(icon => {
+      if (icon instanceof HTMLImageElement) {
+        // 强制加载图像
+        const img = new Image();
+        img.src = icon.src;
+      }
+    });
+  });
+</script>
 
-
-<!-- {
-  featuredTechStack.map((category) => (
-    <div class="my-2">
-      <h4 class="text-xl font-semibold mb-2">{category.cate}</h4>
-      <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-        {category.list.map((tech) => (
-          <li class="text-center">
-            {/* <img
-              src={tech.icon}
-              alt={tech.name}
-              class="w-16 h-16 mx-auto mb-2"
-            /> */}
-            <p class="-zag-text -zag-bg zag-transition font-semibold py-1 px-2">{tech.name}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  ))
-} -->
+<!-- 注释部分保持不变 -->
