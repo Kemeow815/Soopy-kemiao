@@ -1,0 +1,93 @@
+---
+import { GLOBAL } from "../../lib/variables";
+import { featuredTechStack } from "../../lib/techStackData"; // 假设技术栈数据来自这个文件
+import Anchor from "../common/Anchor.astro";
+import LetterGlitch from "../widgets/LetterGlitch"
+
+const technologies = featuredTechStack.flatMap(category => 
+  category.list.map(tech => ({
+    name: tech.name,
+    icon: tech.icon
+  }))
+);
+---
+
+<div class="flex justify-between items-center w-full">
+    <h3 class="font-display text-lg sm:text-xl leading-loose">
+      {GLOBAL.stackTitle}
+    </h3>
+    <!-- <Anchor url="/tech-stack" class="text-base">{GLOBAL.viewAll}</Anchor> -->
+  </div>
+
+<div class="relative overflow-hidden py-8">
+  <!-- 左侧渐变遮罩 -->
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--background)] to-transparent z-20"></div>
+  <!-- 右侧渐变遮罩 -->
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--background)] to-transparent z-20"></div>
+
+  <!-- 滚动容器 -->
+  <div class="flex animate-scroll hover:animate-paused gap-12 md:gap-20 w-max">
+    {
+      [...technologies, ...technologies].map((tech) => (
+        <div class="flex items-center gap-2 group transition-all duration-300">
+          <img
+            src={tech.icon}
+            alt={tech.name}
+            class="h-8 w-auto object-contain transition-transform group-hover:scale-110 transform-gpu"
+            width="28"
+            height="28"
+            loading="lazy"
+          />
+          <span class="text-lg font-medium text-[var(--text-color)]">
+            {tech.name}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+
+
+<style is:global>
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-scroll {
+    animation: scroll 60s linear infinite;
+    will-change: transform;
+  }
+  
+  @media (min-width: 768px) {
+    .animate-scroll {
+      animation-duration: 50s;
+    }
+  }
+</style>
+
+
+
+<!-- {
+  featuredTechStack.map((category) => (
+    <div class="my-2">
+      <h4 class="text-xl font-semibold mb-2">{category.cate}</h4>
+      <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+        {category.list.map((tech) => (
+          <li class="text-center">
+            {/* <img
+              src={tech.icon}
+              alt={tech.name}
+              class="w-16 h-16 mx-auto mb-2"
+            /> */}
+            <p class="-zag-text -zag-bg zag-transition font-semibold py-1 px-2">{tech.name}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))
+} -->
