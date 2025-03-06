@@ -4,8 +4,10 @@ export const GLOBAL = {
   // 网站元数据
   username: "Soopy",
   rootUrl: "https://soopy.cn",
-  shortDescription: "Soopy 的个人作品集。",
-  longDescription: "基于 Astro 构建的 Soopy 个人作品集。",
+  shortDescription: "Soopy の 个人主页",
+  longDescription: "基于 Astro 构建的个人主页",
+
+  // 
   
   // 社交媒体链接
   githubProfile: "https://github.com/lin-snow",

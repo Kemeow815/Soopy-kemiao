@@ -1,5 +1,13 @@
 ---
 import { GLOBAL } from "../../lib/variables";
+import DecryptedText from "../widgets/DecryptedText"
+
+const quotes = [
+  "Engineering the Future.",
+  "Think. Build. Iterate.",
+  "Keep Building, Keep Learning.",
+  "Not a Bug, It’s a Feature."
+]
 ---
 
 <div class="flex flex-col items-center sm:flex-row gap-8">
@@ -17,7 +25,10 @@ import { GLOBAL } from "../../lib/variables";
     <h2
       class="text-center text-xl sm:text-2xl font-mono font-medium sm:text-left"
     >
-    一个展示我的作品、技能和项目的个人简历网站.
+      <DecryptedText text={(quotes[Math.floor(Math.random() * quotes.length)])}
+        animateOn="view"
+        revealDirection="center"
+        client:load />
     </h2>
   </div>
 </div>
