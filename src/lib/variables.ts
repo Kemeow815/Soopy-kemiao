@@ -6,8 +6,6 @@ export const GLOBAL = {
   rootUrl: "https://soopy.cn",
   shortDescription: "Soopy の 个人主页",
   longDescription: "基于 Astro 构建的个人主页",
-
-  // 
   
   // 社交媒体链接
   githubProfile: "https://github.com/lin-snow",
@@ -47,4 +45,5 @@ export const GLOBAL = {
     项目: "/projects",
     博客: "/blog",
   }
+
 };
