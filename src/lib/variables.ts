@@ -2,14 +2,16 @@
 
 export const GLOBAL = {
   // 网站元数据
-  username: "Soopy",
-  rootUrl: "https://soopy.cn",
-  shortDescription: "Soopy の 个人主页",
+  username: "克喵爱吃卤面",
+  rootUrl: "https://kemiaofx.cn",
+  shortDescription: "克喵爱吃卤面 の 个人主页",
   longDescription: "基于 Astro 构建的个人主页",
   
   // 社交媒体链接
-  githubProfile: "https://github.com/lin-snow",
-  twitterProfile: "https://x.com/l1n_sn0w",
+  githubProfile: "https://github.com/Kemeow815",
+  twitterProfile: "https://x.com/kemiaosw",
+  telegramProfile: "https://t.me/kemiaojun",
+  mailProfile: "mailto:kemiaofx@163.com",
   
   // 网站中常用的文本名称
   articlesName: "最新文章",
@@ -22,7 +24,7 @@ export const GLOBAL = {
   noProjects: "暂时没有项目。",
 
   // 技术栈元数据
-  stackTitle: "TechStack",
+  stackTitle: "博客与技术栈",
   stackShortDescription: "我使用的技术工具。",
   stackLongDescription: "我在项目中使用的技术列表",
 
